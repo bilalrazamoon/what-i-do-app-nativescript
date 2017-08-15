@@ -1,0 +1,10 @@
+<StackLayout class="note-item-container">
+    <CardView class="note-item">
+        <FlexboxLayout class="note-item-inner">
+            <Label class="note-item-text" [text]="note.text" textWrap="true"></Label>
+            <Button class="note-item-pin"
+                    [class.active]="note.pinned"
+                    (tap)="togglePin()"></Button>
+        </FlexboxLayout>
+    </CardView>
+</StackLayout>

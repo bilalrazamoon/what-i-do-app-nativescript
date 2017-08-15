@@ -1,0 +1,13 @@
+<StackLayout class="notes-list-container">
+    <ListView class="notes-list"
+              [items]="notes"
+              (setupItemView)="onSetupItemView($event)"
+              (itemLoading)="onItemLoading($event)"
+              *ngIf="notes">
+        <template let-item="item" let-i="index">
+            <ns-note-item [note]="item"
+                          (onPin)="pinNote($event)"
+                          (onUnPin)="unPinNote($event)"></ns-note-item>
+        </template>
+    </ListView>
+</StackLayout>

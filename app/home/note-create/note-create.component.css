@@ -1,0 +1,12 @@
+.note-create {
+    background-color: #ffffff;
+    margin: 10px;
+    height: 40px;
+}
+
+.note-create-text {
+    font-size: 18px;
+    line-height: normal;
+    padding: 10px;
+    background-color: transparent;
+}

@@ -1,0 +1,34 @@
+.note-item-container {
+    background-color: #EBEBEB;
+}
+
+.note-item {
+    margin: 12px;
+    background-color: #ffffff;
+}
+
+.note-item-inner {
+    flex-direction: row;
+    align-items: center;
+}
+
+.note-item-pin {
+    flex: none;
+    margin-right: 4px;
+    width: 22px;
+    height: 22px;
+    background-image: url("~/images/pin.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.note-item-pin.active {
+    background-image: url("~/images/pin-active.png");
+}
+
+.note-item-text {
+    flex: 1;
+    margin: 12px;
+    font-size: 18px;
+}

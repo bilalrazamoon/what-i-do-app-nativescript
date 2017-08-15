@@ -1,0 +1,53 @@
+.page {
+    background-color: #EBEBEB;
+    align-items: center;
+    justify-content: center;
+}
+
+.form {
+    width: 250px;
+    flex-direction: column;
+}
+
+.form .input-field {
+    margin-left: 0;
+    margin-right: 0;
+    flex-direction: column;
+}
+
+.form .input-field .label {
+    margin-bottom: 2px;
+    color: #111;
+}
+
+.form .input-field .input {
+    padding: 0 6px;
+    height: 40px;
+    margin: 0;
+    background-color: #ffffff;
+}
+
+.form .btn {
+    margin: 0;
+    margin-top: 5px;
+    height: 40px;
+    background-color: #008FEF;
+}
+
+.form .btn:highlighted {
+    background-color: #0077cb;
+}
+
+.form .footer {
+    font-size: 16px;
+    justify-content: center;
+    margin-top: 5px;
+}
+
+.form .footer .text {
+    color: #555555;
+}
+
+.form .footer .link {
+    color: #007bd2;
+}

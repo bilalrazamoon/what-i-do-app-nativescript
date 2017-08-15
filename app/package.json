@@ -1,0 +1,8 @@
+{
+  "android": {
+    "v8Flags": "--expose_gc"
+  },
+  "main": "main.js",
+  "name": "what-i-do-app",
+  "version": "2.5.0"
+}

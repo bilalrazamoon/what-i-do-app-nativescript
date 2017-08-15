@@ -1,0 +1,26 @@
+"use strict";
+// this import should be first in order to load some required settings (like globals and reflect-metadata)
+var platform_1 = require("nativescript-angular/platform");
+var app_module_1 = require("./app.module");
+var app_service_1 = require("./app.service");
+var firebase = require("nativescript-plugin-firebase");
+firebase.init({
+    //persist should be set to false as otherwise numbers aren't returned during livesync
+    persist: false,
+    storageBucket: 'gs://what-i-do-app.appspot.com',
+    onAuthStateChanged: function (data) {
+        console.log("firebase:onAuthStateChanged", JSON.stringify(data));
+        if (data.loggedIn) {
+            app_service_1.AuthService.uid = data.user.uid;
+        }
+        else {
+            app_service_1.AuthService.uid = "";
+        }
+    }
+}).then(function (instance) {
+    console.log("firebase.init done");
+}, function (error) {
+    console.log("firebase.init error: " + error);
+});
+platform_1.platformNativeScriptDynamic().bootstrapModule(app_module_1.AppModule);
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoibWFpbi5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIm1haW4udHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IjtBQUFBLDBHQUEwRztBQUMxRywwREFBNEU7QUFFNUUsMkNBQXlDO0FBQ3pDLDZDQUE0QztBQUU1Qyx1REFBMEQ7QUFFMUQsUUFBUSxDQUFDLElBQUksQ0FBQztJQUNWLHFGQUFxRjtJQUNyRixPQUFPLEVBQUUsS0FBSztJQUNkLGFBQWEsRUFBRSxnQ0FBZ0M7SUFDL0Msa0JBQWtCLEVBQUUsVUFBQyxJQUFTO1FBQzFCLE9BQU8sQ0FBQyxHQUFHLENBQUMsNkJBQTZCLEVBQUUsSUFBSSxDQUFDLFNBQVMsQ0FBQyxJQUFJLENBQUMsQ0FBQyxDQUFDO1FBQ2pFLEVBQUUsQ0FBQyxDQUFDLElBQUksQ0FBQyxRQUFRLENBQUMsQ0FBQyxDQUFDO1lBQ2hCLHlCQUFXLENBQUMsR0FBRyxHQUFHLElBQUksQ0FBQyxJQUFJLENBQUMsR0FBRyxDQUFDO1FBQ3BDLENBQUM7UUFDRCxJQUFJLENBQUMsQ0FBQztZQUNGLHlCQUFXLENBQUMsR0FBRyxHQUFHLEVBQUUsQ0FBQztRQUN6QixDQUFDO0lBQ0wsQ0FBQztDQUNKLENBQUMsQ0FBQyxJQUFJLENBQUMsVUFBQSxRQUFRO0lBQ1osT0FBTyxDQUFDLEdBQUcsQ0FBQyxvQkFBb0IsQ0FBQyxDQUFDO0FBQ3RDLENBQUMsRUFBRSxVQUFBLEtBQUs7SUFDSixPQUFPLENBQUMsR0FBRyxDQUFDLHVCQUF1QixHQUFHLEtBQUssQ0FBQyxDQUFDO0FBQ2pELENBQUMsQ0FBQyxDQUFDO0FBRUgsc0NBQTJCLEVBQUUsQ0FBQyxlQUFlLENBQUMsc0JBQVMsQ0FBQyxDQUFDIiwic291cmNlc0NvbnRlbnQiOlsiLy8gdGhpcyBpbXBvcnQgc2hvdWxkIGJlIGZpcnN0IGluIG9yZGVyIHRvIGxvYWQgc29tZSByZXF1aXJlZCBzZXR0aW5ncyAobGlrZSBnbG9iYWxzIGFuZCByZWZsZWN0LW1ldGFkYXRhKVxuaW1wb3J0IHsgcGxhdGZvcm1OYXRpdmVTY3JpcHREeW5hbWljIH0gZnJvbSBcIm5hdGl2ZXNjcmlwdC1hbmd1bGFyL3BsYXRmb3JtXCI7XG5cbmltcG9ydCB7IEFwcE1vZHVsZSB9IGZyb20gXCIuL2FwcC5tb2R1bGVcIjtcbmltcG9ydCB7IEF1dGhTZXJ2aWNlIH0gZnJvbSBcIi4vYXBwLnNlcnZpY2VcIjtcblxuaW1wb3J0IGZpcmViYXNlID0gcmVxdWlyZShcIm5hdGl2ZXNjcmlwdC1wbHVnaW4tZmlyZWJhc2VcIik7XG5cbmZpcmViYXNlLmluaXQoe1xuICAgIC8vcGVyc2lzdCBzaG91bGQgYmUgc2V0IHRvIGZhbHNlIGFzIG90aGVyd2lzZSBudW1iZXJzIGFyZW4ndCByZXR1cm5lZCBkdXJpbmcgbGl2ZXN5bmNcbiAgICBwZXJzaXN0OiBmYWxzZSxcbiAgICBzdG9yYWdlQnVja2V0OiAnZ3M6Ly93aGF0LWktZG8tYXBwLmFwcHNwb3QuY29tJyxcbiAgICBvbkF1dGhTdGF0ZUNoYW5nZWQ6IChkYXRhOiBhbnkpID0+IHtcbiAgICAgICAgY29uc29sZS5sb2coXCJmaXJlYmFzZTpvbkF1dGhTdGF0ZUNoYW5nZWRcIiwgSlNPTi5zdHJpbmdpZnkoZGF0YSkpO1xuICAgICAgICBpZiAoZGF0YS5sb2dnZWRJbikge1xuICAgICAgICAgICAgQXV0aFNlcnZpY2UudWlkID0gZGF0YS51c2VyLnVpZDtcbiAgICAgICAgfVxuICAgICAgICBlbHNlIHtcbiAgICAgICAgICAgIEF1dGhTZXJ2aWNlLnVpZCA9IFwiXCI7XG4gICAgICAgIH1cbiAgICB9XG59KS50aGVuKGluc3RhbmNlID0+IHtcbiAgICBjb25zb2xlLmxvZyhcImZpcmViYXNlLmluaXQgZG9uZVwiKTtcbn0sIGVycm9yID0+IHtcbiAgICBjb25zb2xlLmxvZyhcImZpcmViYXNlLmluaXQgZXJyb3I6IFwiICsgZXJyb3IpO1xufSk7XG5cbnBsYXRmb3JtTmF0aXZlU2NyaXB0RHluYW1pYygpLmJvb3RzdHJhcE1vZHVsZShBcHBNb2R1bGUpO1xuIl19

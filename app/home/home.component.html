@@ -1,0 +1,36 @@
+<FlexboxLayout class="page">
+    <FlexboxLayout class="header">
+        <FlexboxLayout class="profile"
+                       *ngIf="user"
+                       (tap)="onProfile()">
+            <Image src="~/images/avatar.png" class="img-circle profile-image"></Image>
+            <Label [text]="user?.name" class="profile-name"></Label>
+        </FlexboxLayout>
+    </FlexboxLayout>
+    <FlexboxLayout class="body">
+        <StackLayout class="body-create">
+            <ns-note-create (onDone)="createNote($event)"></ns-note-create>
+        </StackLayout>
+        <StackLayout class="body-list">
+            <!--<StackLayout class="note-bar"
+                         *ngIf="isPinNotes()">
+                <SegmentedBar selectedIndex="0"
+                              (selectedIndexChange)="onIndexChange(s$event)">
+                    <SegmentedBarItem title="Pinned">
+                        Pinned
+                    </SegmentedBarItem>
+                    <SegmentedBarItem title="Other">
+                        Other
+                    </SegmentedBarItem>
+                </SegmentedBar>
+            </StackLayout>-->
+            <ns-note-list [notes]="notes"></ns-note-list>
+            <!--<StackLayout *ngIf="isPinNotes()">
+                <ns-note-list [notes]="pinnedNotes"></ns-note-list>
+            </StackLayout>
+            <StackLayout *ngIf="isPinNotes()">
+                <ns-note-list [notes]="otherNotes"></ns-note-list>
+            </StackLayout>-->
+        </StackLayout>
+    </FlexboxLayout>
+</FlexboxLayout>

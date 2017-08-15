@@ -1,0 +1,46 @@
+.page {
+    flex-direction: column;
+    background-color: #EBEBEB;
+}
+
+.header {
+    flex: none;
+    height: 60px;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.profile {
+    align-items: center;
+    margin-right: 14px;
+}
+
+.profile-image {
+    width: 36px;
+    height: 36px;
+    border-radius: 18px;
+    margin-right: 8px;
+}
+
+.profile-name {
+    font-size: 20px;
+    color: #555555;
+}
+
+.body {
+    flex: 1;
+    flex-direction: column;
+    background-color: transparent;
+}
+
+.body-create {
+    flex: none;
+}
+
+.body-list {
+    flex: 1;
+}
+
+.note-bar {
+    margin: 5px 10px;
+}

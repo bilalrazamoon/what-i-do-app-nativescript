@@ -1,0 +1,9 @@
+<StackLayout class="note-create-container">
+    <CardView class="note-create">
+        <TextField class="note-create-text"
+                   hint="What is it that you do?"
+                   returnKeyType="done"
+                   (returnPress)="onEnter()"
+                   [(ngModel)]="value"></TextField>
+    </CardView>
+</StackLayout>
